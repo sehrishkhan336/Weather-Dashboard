@@ -1,0 +1,105 @@
+/*.header-bg  style */
+.header-bg {
+  background: linear-gradient(to right, #09134b, #20033d) !important;
+}
+
+/* .header style */
+.header {
+  color: whitesmoke;
+  text-align: center;
+  font-size: 48px;
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  border: 2px solid black;
+}
+
+/* .form-style style */
+.form-style {
+  float: left;
+}
+
+/* card style */
+.card {
+  float: right;
+}
+
+/* form-label style */
+.form-label {
+  font-weight: bold;
+  color: aliceblue;
+  font-size: 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* city-info placeholder style */
+.city-info::placeholder {
+  opacity: 0.5;
+}
+
+/* city-info style */
+.city-info {
+  border-radius: .5rem;
+  margin-bottom: 20px;
+}
+
+/* input-control and button style */
+.input-control,
+.btn {
+  font-weight: bold;
+  border-radius: .5rem;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* city-list style */
+.city-list {
+  float: left;
+  border-top: 2px solid gray;
+}
+
+/* list-group-item style */
+.list-group-item {
+  background-color: gray;
+  color: black;
+  font-size: 20px;
+}
+/* styling the text-center */
+.text-center {
+  background-color: #09134b;
+  color: lightslategray;
+}
+
+/* styling the card header */
+.card-header {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* card-text styling */
+.card-text {
+  font-size: 14px;
+}
+
+.card-title {
+  font-size: 14px;
+}
+
+/* Apply animation to weather icons in sunny weather */
+.icon {
+  animation: shrink 5s ease-in-out infinite;
+}
+
+@keyframes shrink {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
