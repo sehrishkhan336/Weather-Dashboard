@@ -31,12 +31,83 @@ $(document).ready(function () {
         '50n': 'mist-night'
     };
 
+    var cityArray = [];
+    function saveSearchHistory(city) {
+        if (cityArray.indexOf(city) !== -1) {
+            return;
+        }
+        cityArray.push(city)
+        localStorage.setItem("search-history", JSON.stringify(cityArray));
+        displayHistoryButton();
+    }
 
+    function displayHistoryButton() {
+        var citySearch = $(".city-list");
+        citySearch.empty();
+        var storedHistory = localStorage.getItem("search-history");
+        if (storedHistory) {
+            cityArray = JSON.parse(storedHistory);
+        }
+        cityArray.forEach(function (city) {
+            var btn = $("<button>");
+            btn.text(city);
+            btn.addClass("History")
+            citySearch.append(btn);
+        })
+    }
+
+    $(".city-list").on("click", function (event) {
+        if (!event.target.matches(".History")) {
+            return;
+        }
+        var cityName = event.target.textContent;
+        // Get the current date and update the HTML element
+        var currentDateEl = $('#current-date');
+        var dateEl = dayjs().format('MM/DD/YYYY');
+        currentDateEl.text(dateEl);
+        //my date element isnt providing updated date
+        console.log(currentDateEl);
+        // An API to fetch the weather data for the city
+        var apiKey = "06de102a53257d1289598a386f064bba";
+        var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                dateEl.innerHTML = currentDateEl.val();
+                // console.log(currentDateEl);
+                // Update the weather data
+                updateWeatherData(data);
+                // Add the city to the search history
+                // searchHistory.push(cityName);
+                updateSearchHistory();
+                var lat = data.coord.lat;
+                var lon = data.coord.lon;
+                // for forecast
+                // `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`
+                var forecastApiUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey;
+
+                fetch(forecastApiUrl)
+                    .then(response => response.json())
+                    .then(data => updateForecast(data, cityName));
+                console.log(updateForecast);
+            });
+    })
+    initHistoryButton();
+    function initHistoryButton() {
+        var storedHistory = localStorage.getItem("search-history");
+        if (storedHistory) {
+            cityArray = JSON.parse(storedHistory);
+        }
+        displayHistoryButton();
+    }
 
     // Retrieve the value of the input field where the user enters the city name.
     searchFormEl.on("submit", function (event) {
         event.preventDefault();
         var cityName = $("#search-for-city").val();
+        console.log(cityName);
+        saveSearchHistory(cityName);
         // An API to fetch the weather data for the city
         var apiKey = "06de102a53257d1289598a386f064bba";
         var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
@@ -56,6 +127,9 @@ $(document).ready(function () {
                 console.log(currentDateEl);
                 // Update the weather data
                 updateWeatherData(data);
+
+                // Clear the input area
+                $("#search-for-city").val("");
                 // Add the city to the search history
                 searchHistory.push(cityName);
                 updateSearchHistory();
@@ -82,16 +156,24 @@ $(document).ready(function () {
         iconElement.attr('src', iconApi + data.weather[0].icon + '.png');
         console.log(data);
         animateWeatherCondition(data);
+        // Save the weather data to localStorage
+        // localStorage.setItem("weatherData", JSON.stringify(data));
     }
+
 
     // Update the search history
     function updateSearchHistory() {
-        //clear the search history
+        // Get the search history from localStorage
+        searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+
+        // Clear the search history
         searchHistoryEl.empty();
+
+        // Loop through the search history array and create a list item for each city
         $.each(searchHistory, function (_index, city) {
-            console.log(searchHistory);
             var listItem = $("<li>").text(city);
             searchHistoryEl.append(listItem);
+
             // Add click event handler to new search history item
             listItem.on("click", handleSearchHistoryClick);
         });
@@ -160,15 +242,15 @@ $(document).ready(function () {
 
             var humidityEl = $(this).find(".card-text").eq(1);
             humidityEl.text("Humidity: " + humidity + "%");
-
         });
+
+        // Save the forecast data to localStorage
+        // localStorage.setItem("forecastData", JSON.stringify(data));
     }
 
     // Function to handle click events on the search history list
     function handleSearchHistoryClick(_event) {
         var cityName = $(this).text();
-        console.log(cityName);
-        console.log(handleSearchHistoryClick);
 
         var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
         fetch(apiUrl)
@@ -176,6 +258,14 @@ $(document).ready(function () {
             .then(data => {
                 // Update the weather data
                 updateWeatherData(data);
+
+                // Add the city to the search history and save it to localStorage
+                searchHistory.push(cityName);
+                saveSearchHistory();
+
+                // Update the search history
+                updateSearchHistory();
+
                 // Update the forecast data
                 var lat = data.coord.lat;
                 var lon = data.coord.lon;
@@ -184,11 +274,13 @@ $(document).ready(function () {
                 fetch(forecastApiUrl)
                     .then(response => response.json())
                     .then(data => updateForecast(data));
-                console.log(handleSearchHistoryClick);
             });
     }
 
 });
+// Save search of the city to persist when reloading the page
+
+
 function animateWeatherCondition(data) {
     var weatherCode = data.weather[0].icon;
     var animationContainer = $('body');

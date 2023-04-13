@@ -1,6 +1,6 @@
 /*.header-bg  style */
 .header-bg {
-  background: linear-gradient(to right, #09134b, #20033d) !important;
+  background: linear-gradient(to right, #381a32, #08313d) !important;
 }
 
 /* .header style */
@@ -83,6 +83,23 @@
 
 .card-title {
   font-size: 14px;
+}
+.city-list{
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.city-list button {
+  background-color: gray;
+  color: white;
+  margin: 5px;
+  padding: 5px 10px;
+  border: 1 solid black;
+  border-radius: 1 rem;
+  cursor: pointer;
+  width: 19rem;
+
 }
 
 /* Apply animation to weather icons in sunny weather */
