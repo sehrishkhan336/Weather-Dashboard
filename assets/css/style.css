@@ -113,15 +113,16 @@
   }
 
   .col-sm-4 {
-      width: 75%;
+      width: 25%;
   }
 
   .col-sm-8 {
-      width: 75%;
+      width: 65%;
   }
 
   .city-list {
-      order: -1;
+      order: 1;
       margin-bottom: 1rem;
   }
 }
+
