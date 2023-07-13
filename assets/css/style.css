@@ -107,16 +107,21 @@
   animation: shrink 5s ease-in-out infinite;
 }
 
-@keyframes shrink {
-  0% {
-    transform: scale(1);
+@media (max-width: 767px) {
+  .container {
+      flex-direction: column;
   }
 
-  50% {
-    transform: scale(0.5);
+  .col-sm-4 {
+      width: 75%;
   }
 
-  100% {
-    transform: scale(1);
+  .col-sm-8 {
+      width: 75%;
+  }
+
+  .city-list {
+      order: -1;
+      margin-bottom: 1rem;
   }
 }

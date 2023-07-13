@@ -1,31 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
-<body>
+<body style="background: linear-gradient(to right, #02424b, #20033d);">
 
     <div class="container">
         <div class="row">
             <div class="col">
-                <header class="header" style="background: linear-gradient(to right, #0e1957, #20033d);">
+                <header class="header p-3 header-bg" style="background: linear-gradient(to right, #0e1957, #20033d);">
                     Weather Dashboard
                 </header>
-
             </div>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="col">
+
+            <div class="col-sm-3">
                 <div style="width: 19rem;" class="col-sm-4 form-style">
                     <form class="search-input" id="city-search-form">
                         <div>
@@ -38,8 +38,9 @@
                     </form>
                 </div>
             </div>
-            <div class="col">
-                <div class="col-sm-12 card city-data mt-md-5" style="width: 54rem; height: 14rem;">
+
+            <div class="col-sm-7">
+                <div class="col-sm-7 card city-data mt-md-5" style="width: 54rem; height: 14rem;">
                     <div class="card-body">
                         <div class="d-flex justify-content-start">
                             <h2 class="city-info mx-3">Los Angeles</h2>
@@ -53,7 +54,7 @@
                                 <div class="label p-md-2 mx-3">Wind:</div>
                                 <div class="label p-md-2 mx-3">Humidity:</div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-7">
                                 <div class="value p-md-2"><span>49</span>&deg;F</div>
                                 <div class="value p-md-2"><span>5</span>mph</div>
                                 <div class="value p-md-2"><span>89</span>%</div>
@@ -64,24 +65,22 @@
                 </div>
 
             </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="col-sm-4 city-list">
-                    <nav class="col  mt-md-4" style="width: 20rem;">
+
+            <div class="col-sm-3">
+                <div class="col city-list">
+                    <nav class="col " style="width: 20rem;">
 
                     </nav>
                 </div>
             </div>
-            <div class="col">
+            
+            <div class="col-sm-7">
                 <div class="col-sm-8 card daily-forecast mt-md-5" style="width: 54rem; height: 25rem;">
-                    <h2 class="col-sm-8 p-md-3">5-Day Forecast:</h2>
+                    <h2 class="col p-md-3">5-Day Forecast:</h2>
                     <div class="forecast-container">
 
                         <div class="row d-flex justify-content-center forecast-cards">
-                            <div class="card text-center" style="width: 10rem; height: 18rem;">
+                            <div class="card text-center col-sm-6 col-md-4" style="width: 10rem; height: 18rem;">
                                 <div class="card-header" id="card-header"></div>
                                 <div class="card-body d-flex flex-column justify-content-center">
                                     <img class="mx-1 icon" src="../Weather Dashboard/Images/clouds-and-sun.png"
@@ -94,7 +93,7 @@
                                 </div>
                             </div>
 
-                            <div class="card text-center mx-2" style="width: 10rem; height: 18rem;">
+                            <div class="card text-center mx-2 col-sm-6 col-md-4" style="width: 10rem; height: 18rem;">
                                 <div class="card-header" id="card-header"></div>
                                 <div class="card-body d-flex flex-column justify-content-center">
                                     <img class="mx-1 icon" src="../Weather Dashboard/Images/clouds-and-sun.png"
@@ -107,7 +106,7 @@
                                 </div>
                             </div>
 
-                            <div class="card text-center" style="width: 10rem; height: 18rem;">
+                            <div class="card text-center col-sm-6 col-md-4" style="width: 10rem; height: 18rem;">
                                 <div class="card-header" id="card-header"></div>
                                 <div class="card-body d-flex flex-column justify-content-center">
                                     <img class="mx-1 icon" src="../Weather Dashboard/Images/clouds-and-sun.png"
@@ -120,7 +119,7 @@
                                 </div>
                             </div>
 
-                            <div class="card text-center mx-2" style="width: 10rem; height: 18rem;">
+                            <div class="card text-center mx-2 col-sm-6 col-md-4" style="width: 10rem; height: 18rem;">
                                 <div class="card-header" id="card-header"></div>
                                 <div class="card-body d-flex flex-column justify-content-center">
                                     <img class="mx-1 icon" src="../Weather Dashboard/Images/clouds-and-sun.png"
@@ -133,7 +132,7 @@
                                 </div>
                             </div>
 
-                            <div class="card text-center" style="width: 10rem; height: 18rem;">
+                            <div class="card text-center col-sm-6 col-md-4" style="width: 10rem; height: 18rem;">
                                 <div class="card-header" id="card-header"></div>
                                 <div class="card-body d-flex flex-column justify-content-center">
                                     <img class="mx-1 icon" src="../Weather Dashboard/Images/clouds-and-sun.png"
@@ -151,6 +150,25 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"
+        integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/plugin/utc.min.js"
+        integrity="sha512-m00bfmYnAl3plEBlQfeQUhw/U2uvmw29V2+jxSWpAjankMWS+zAsjezbKWDEJNXqWq9o9qQZSOiA2RKDpa4D5w=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/plugin/timezone.min.js"
+        integrity="sha512-pslqxxHAYPCxaSeFSmXXxDkLejD5dbFVC66aiVq0z4v7VTJBU+wqcG1OpNh4p3MjS2D6NCwz/H2QmSc7dXxryg=="
+        crossorigin="anonymous"></script>
+    <script src="./assets/JavaScript/script.js"></script>
+
 </body>
 
 </html>
