@@ -69,7 +69,7 @@ $(document).ready(function () {
         console.log(currentDateEl);
         // An API to fetch the weather data for the city
         var apiKey = "06de102a53257d1289598a386f064bba";
-        var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+        var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + apiKey;
 
         fetch(apiUrl)
             .then(response => response.json())
@@ -110,7 +110,7 @@ $(document).ready(function () {
         saveSearchHistory(cityName);
         // An API to fetch the weather data for the city
         var apiKey = "06de102a53257d1289598a386f064bba";
-        var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+        var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + apiKey;
 
 
         // Get the current date and update the HTML element
@@ -252,7 +252,7 @@ $(document).ready(function () {
     function handleSearchHistoryClick(_event) {
         var cityName = $(this).text();
 
-        var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+        var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + apiKey;
         fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
