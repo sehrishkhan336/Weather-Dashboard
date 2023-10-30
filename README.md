@@ -41,13 +41,13 @@ You can also explore the weather data for different cities by entering their nam
 ## Technologies
 The Weather Dashboard application is built using the following technologies:
 
-HTML
-CSS
-JavaScript
-Bootstrap (5.3.0-alpha2)
-jQuery (3.2.1)
-Day.js (1.11.3)
-Contributing
+* HTML
+* CSS
+* Bootstrap
+* jQuery 
+* Day.js 
+  
+## Contributing
 If you would like to contribute to the development of the Weather Dashboard application, please follow these guidelines:
 
 ## Fork the repository.
